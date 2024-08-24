@@ -1,3 +1,9 @@
+# pendientes
+
+hacer funcionar batch para telefonos e emails y que estos tengan la funcion dinamica, para agregar o quitar.
+
+corregir el calendario, esta fallando.
+
 # LibretaContactosFrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
