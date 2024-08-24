@@ -23,7 +23,10 @@
           <tr>
             <td>Nombre</td>
             <td>Apellido</td>
-            <td>notas</td>
+            <td>Telefono Principal</td>
+            <td>Direccion Principal</td>
+            <td>Codigo Postal Principal</td>
+            <td>Email Principal</td>
             <td>cumpleaños</td>
             <td>paginaWeb</td>
             <td>empresa</td>
@@ -34,23 +37,31 @@
           <tr>
             <td>{{ item.nombre }}</td>
             <td>{{ item.apellido }}</td>
-            <td>{{ item.notas }}</td>
+            <td>{{ item.telefono[0].telefono }}</td>
+            <td>{{ item.direccion[0].direccion }}</td>
+            <td>{{ item.direccion[0].cp }}</td>
+            <td>{{ item.email[0].email }}</td>
             <td>{{ item.cumple }}</td>
             <td>{{ item.paginaWeb }}</td>
             <td>{{ item.empresa }}</td>
             <td>{{ item.created_at }}</td>
             <td>
-              <a (click)="contactoF(item.id)"
-                ><div
-                  routerLinkActive="router-link-active"
-                  class="btn btn-success"
+              <div class="d-flex">
+                <a (click)="contactoF(item.id)"
+                  ><div
+                    routerLinkActive="router-link-active"
+                    class="btn btn-success"
+                  >
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Editar
+                  </div></a
                 >
-                  <i class="fa-solid fa-pen-to-square"></i></div
-              ></a>
-              <a (click)="open(content, item.id, item.nombre)"
-                ><div class="btn btn-danger">
-                  <i class="fa-solid fa-delete-left"></i></div
-              ></a>
+                <a (click)="open(content, item.id, item.nombre)"
+                  ><div class="btn btn-danger">
+                    <i class="fa-solid fa-delete-left"></i> Eliminar
+                  </div></a
+                >
+              </div>
             </td>
           </tr>
           }

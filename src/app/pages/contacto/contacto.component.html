@@ -15,6 +15,7 @@
             id="nombre"
             [(ngModel)]="data.nombre"
             name="nombre"
+            [ngModelOptions]="{ standalone: true }"
           />
         </div>
         <div class="form-group">
@@ -25,6 +26,7 @@
             id="apellido"
             name="apellido"
             [(ngModel)]="data.apellido"
+            [ngModelOptions]="{ standalone: true }"
           />
         </div>
 
@@ -36,6 +38,7 @@
             id="cumple"
             name="cumple"
             [(ngModel)]="data.cumple"
+            [ngModelOptions]="{ standalone: true }"
           />
         </div>
         <ngb-datepicker
@@ -52,6 +55,7 @@
             id="paginaWeb"
             name="paginaWeb"
             [(ngModel)]="data.paginaWeb"
+            [ngModelOptions]="{ standalone: true }"
           />
         </div>
         <div class="form-group">
@@ -62,18 +66,102 @@
             id="empresa"
             name="empresa"
             [(ngModel)]="data.empresa"
+            [ngModelOptions]="{ standalone: true }"
           />
         </div>
         <div class="form-group">
-          <label for="nombre">Notas:</label>
+          <label for="notas">Notas:</label>
           <input
             type="text"
             class="form-control"
             id="notas"
             name="notas"
             [(ngModel)]="data.notas"
+            [ngModelOptions]="{ standalone: true }"
           />
         </div>
+        @for (direccion of data.direccion; track direccion; let i=$index) {
+
+        <div>
+          <div class="form-group">
+            <label for="direccion">Direccion: </label>
+            <input
+              type="text"
+              class="form-control"
+              name="direccion"
+              [(ngModel)]="data.direccion[i].direccion"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nombreDireccion">Nombre de direccion:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nombreDireccion"
+              [(ngModel)]="data.direccion[i].nombreDireccion"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="cp">cp:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="cp"
+              [(ngModel)]="data.direccion[i].cp"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+        </div>
+
+        } @for (telefono of data.telefono; track telefono; let i=$index) {
+        <div class="form-group">
+          <label for="telefono">Telefono:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="telefono"
+            [(ngModel)]="data.telefono[i].telefono"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Tipo de telefono:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tipoTelefono"
+            [(ngModel)]="data.telefono[i].tipo"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        } @for (email of data.email; track email; let i=$index) {
+        <div class="form-group">
+          <label for="telefono">email:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            [(ngModel)]="data.email[i].email"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Tipo de Email:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tipoEmail"
+            [(ngModel)]="data.email[i].tipo"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        }
         <br />
         <a (click)="send()"
           ><div type="submit" class="btn btn-primary">Save</div></a

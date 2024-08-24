@@ -40,8 +40,14 @@ export class generalService {
       .set('paginaWeb', data.paginaWeb)
       .set('empresa', data.empresa)
     ;
+    if(!(data.direccion)){
+      const direccion = new HttpParams().set('direccion', data.direccion);
+      this.http.post( API.SERVER + API.BULK_INSERT_DIRECCION, direccion);
+    }
+
 
     return this.http.post( API.SERVER + API.POST_CREATECONTACTOS, body);
+
   }
 
   updateContacto(data: any) {

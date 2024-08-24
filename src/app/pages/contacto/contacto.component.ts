@@ -31,7 +31,9 @@ export class ContactoPageComponent implements OnInit {
 	model:NgbDateStruct | undefined;
 	date: { year: number; month: number; } | undefined;
   contactos:any;
-
+  direccion=[];
+  telefono=[];
+  email=[];
   id:any=0;
   data:any={
     id:this.id,
@@ -41,7 +43,9 @@ export class ContactoPageComponent implements OnInit {
     cumple:"",
     paginaWeb:"",
     empresa:"",
-
+    direccion:[],
+    telefono:[],
+    email:[],
   }
   constructor(
    private service:generalService,
@@ -61,6 +65,19 @@ export class ContactoPageComponent implements OnInit {
     }
 
 
+  }
+  telefonoAdd(){
+    this.data.telefono.push(
+      {
+        //id:"",
+        id_contacto:this.id,
+        telefono:"",
+        tipo:"",
+      }
+    );
+  }
+  telefonoQuit($event:any){
+    this.data.telefono.splice($event, 1);
   }
 
   send(){
@@ -102,6 +119,9 @@ export class ContactoPageComponent implements OnInit {
       this.data.cumple=this.contactos.cumple;
       this.data.paginaWeb=this.contactos.paginaWeb;
       this.data.empresa=this.contactos.empresa;
+      this.data.telefono=this.contactos.telefono;
+      this.data.direccion=this.contactos.direccion;
+      this.data.email=this.contactos.email;
       console.log(this.data);
     },error =>{
       console.log(error);

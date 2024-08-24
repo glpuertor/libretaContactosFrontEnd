@@ -9,4 +9,7 @@ export class API{
   static GET_CONTACTO = 'contacto/';//id=#
   static PUT_CONTACTO = 'contactoU/';
   static DELETE_CONTACTO = 'contacto/';
+
+  //bulks
+  static BULK_INSERT_DIRECCION='bulks/direccion/bulk';
 }
