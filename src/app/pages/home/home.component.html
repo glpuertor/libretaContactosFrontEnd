@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Libreta de contactos Lista de contactos</h2>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <input [(ngModel)]="valueInput" placeholder="nombre" />
+          <div (click)="allContacto(1)" class="btn-primary btn">Buscar</div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div (click)="contactoF()" class="btn btn-primary">
+            Añadir nuevo contacto +
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+      <table>
+        <tbody>
+          <tr>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>notas</td>
+            <td>cumpleaños</td>
+            <td>paginaWeb</td>
+            <td>empresa</td>
+            <td>Fecha de creacion</td>
+            <td></td>
+          </tr>
+          @for (item of contacto; track $index) {
+          <tr>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.apellido }}</td>
+            <td>{{ item.notas }}</td>
+            <td>{{ item.cumple }}</td>
+            <td>{{ item.paginaWeb }}</td>
+            <td>{{ item.empresa }}</td>
+            <td>{{ item.created_at }}</td>
+            <td>
+              <a (click)="contactoF(item.id)"
+                ><div
+                  routerLinkActive="router-link-active"
+                  class="btn btn-success"
+                >
+                  <i class="fa-solid fa-pen-to-square"></i></div
+              ></a>
+              <a (click)="open(content, item.id, item.nombre)"
+                ><div class="btn btn-danger">
+                  <i class="fa-solid fa-delete-left"></i></div
+              ></a>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12">
+      <ngb-pagination
+        [collectionSize]="lastPage"
+        [(page)]="page"
+        [maxSize]="10"
+        [boundaryLinks]="true"
+        (pageChange)="allContacto($event)"
+      />
+    </div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Do you want delete?</h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="d('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure? do you want delete the provider: {{ modalName }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="c(); destroyContacto(modalId)"
+        >
+          Delete
+        </button>
+      </div>
+    </ng-template>
+
+    <!--
+      <div class="row">
+        <div class="col-12">
+          <p>Default pagination:</p>
+          <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination" />
+          <hr />
+          <pre>Current page: {{ page }}</pre>
+        </div>
+
+      </div>
+      -->
+  </div>
+</div>

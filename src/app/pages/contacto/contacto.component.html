@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Provider</h2>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-12">
+      <form>
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="data.nombre"
+            name="nombre"
+          />
+        </div>
+        <div class="form-group">
+          <label for="nombre">Apellido:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="apellido"
+            name="apellido"
+            [(ngModel)]="data.apellido"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">cumpleaños:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cumple"
+            name="cumple"
+            [(ngModel)]="data.cumple"
+          />
+        </div>
+        <ngb-datepicker
+          #dp
+          [(ngModel)]="data.cumple"
+          (navigate)="date = $event.next"
+        />
+
+        <div class="form-group">
+          <label for="paginaWeb">Pagina Web:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="paginaWeb"
+            name="paginaWeb"
+            [(ngModel)]="data.paginaWeb"
+          />
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="empresa"
+            name="empresa"
+            [(ngModel)]="data.empresa"
+          />
+        </div>
+        <div class="form-group">
+          <label for="nombre">Notas:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="notas"
+            name="notas"
+            [(ngModel)]="data.notas"
+          />
+        </div>
+        <br />
+        <a (click)="send()"
+          ><div type="submit" class="btn btn-primary">Save</div></a
+        >
+        <a href="providers"
+          ><div type="submit" class="btn btn-danger">Return</div></a
+        >
+        <br />
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Tu contacto se guardo con exito
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>Tu contacto se guardo con exito</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="c()">Ok</button>
+  </div>
+</ng-template>
